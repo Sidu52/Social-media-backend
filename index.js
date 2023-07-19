@@ -17,7 +17,7 @@ const port = process.env.PORT || 4000;
 
 app.use(cors());
 const corsOptions = {
-    origin: 'https://siddhantsharmasocialmedia.netlify.app/', // Allow only requests from this domain
+    origin: 'https://siddhantsharmasocialmedia.netlify.app', // Allow only requests from this domain
     optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
