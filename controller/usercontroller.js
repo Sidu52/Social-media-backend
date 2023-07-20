@@ -71,7 +71,7 @@ async function emailverification(req, res) {
         // Generate OTP
         const otp = Math.floor(100000 + Math.random() * 900000);
         // Send OTP
-        await sendOTP(email, otp);
+        await sendOTP("OTP", email, otp);
 
         // Find existing email verification record
         const existingEmail = await emailverifed.findOne({ email });
@@ -210,5 +210,11 @@ const getfollowers = async (req, res) => {
     }
 };
 
+const contactMail = (req, res) => {
+    const { name, email, companyName, message } = req.body.data;
+    sendOTP("contact", email, name, companyName, message)
+    res.status(201).json({ message: "Email Send Successful" })
+}
 
-module.exports = { loginpage, singup, signin, emailverification, otpverification, getAlluser, signout, follower, getfollowers }
+
+module.exports = { loginpage, singup, signin, emailverification, otpverification, getAlluser, signout, follower, getfollowers, contactMail }
