@@ -75,20 +75,23 @@ const updateUserAvatar = async (req, res) => {
         const { user } = req.body;
         const { path } = req.file;
         let uploadedFile;
-
+        console.log("1");
 
         // Upload image file
         uploadedFile = await cloudinary.uploader.upload(path, {
             folder: "samples"
         });
+        console.log("2");
 
         const findUser = await User.findByIdAndUpdate(user);
         const post = await Post.find({ user })
-
+        console.log("3");
         findUser.avatar = uploadedFile.secure_url
+        console.log("4");
         await findUser.save();// Save the post to the database
         // Delete the local file after upload
         fs.unlinkSync(path);
+        console.log("5");
 
         return res.status(201).json({
             message: "Post upload Succesful",
