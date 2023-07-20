@@ -5,11 +5,9 @@ const passport = require('passport')
 
 // Set up multer storage and file handling
 const storage = multer.diskStorage({
-    console.log("m1");
     destination: function (req, file, cb) {
          cb(null, 'uploads/');
     },
-    console.log("m2");
 
     filename: function (req, file, cb) {
         cb(null, file.originalname);
