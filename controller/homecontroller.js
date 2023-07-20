@@ -75,16 +75,13 @@ const updateUserAvatar = async (req, res) => {
         const { user } = req.body;
         const { path } = req.file;
         let uploadedFile;
-
-
+        
         // Upload image file
         uploadedFile = await cloudinary.uploader.upload(path, {
             folder: "samples"
         });
-
         const findUser = await User.findByIdAndUpdate(user);
         const post = await Post.find({ user })
-
         findUser.avatar = uploadedFile.secure_url
         await findUser.save();// Save the post to the database
         // Delete the local file after upload
