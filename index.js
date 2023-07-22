@@ -38,7 +38,7 @@ app.use(
         },
 
         store: MongoStore.create({
-            mongoUrl: "mongodb://127.0.0.1:27017/socialmedias",
+            mongoUrl: process.env.MONGO_URL,
             autoRemove: 'disabled'
         },
             (err) => {
