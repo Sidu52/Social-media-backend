@@ -5,7 +5,7 @@ const router = express.Router();
 const { singup, signin, emailverification, otpverification, getAlluser, loginpage, signout, follower, getfollowers, contactMail } = require('../controller/usercontroller');
 
 router.get('/', getAlluser);
-router.get('/login', passport.checkAuthentication, loginpage);
+router.get('/login', loginpage);
 router.post('/signin', passport.authenticate('local', { failureRedirect: '/signin', failureFlash: true }), signin);
 router.post('/signup', singup);
 router.post('/signout', signout);
