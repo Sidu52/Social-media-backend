@@ -17,8 +17,7 @@ const port = process.env.PORT || 4000;
 
 app.use(cors());
 const corsOptions = {
-    origin: 'https://siddhantsharmasocialmedia.netlify.app', // Allow only requests from this domain
-    // origin: 'http://localhost:5173/',
+    origin: 'https://siddhantsharmasocialmedia.netlify.app/', // Allow only requests from this domain
     optionsSuccessStatus: 200 // Some legacy browsers (IE11, various SmartTVs) choke on 204
 };
 app.use(cors(corsOptions));
@@ -38,7 +37,7 @@ app.use(
         },
 
         store: MongoStore.create({
-            mongoUrl: process.env.MONGO_URL,
+            mongoUrl: "mongodb://127.0.0.1:27017/socialmedias",
             autoRemove: 'disabled'
         },
             (err) => {
