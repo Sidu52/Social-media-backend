@@ -105,7 +105,8 @@ const getPosts = async (req, res) => {
         const localuser = await User.findById(id);//find local User for fillter post according following
 
         //If user not login than show all Post
-        if (!localuser || localuser.following.length==null) {
+        console.log(localuser.following);
+        if (!localuser || localuser.following==null) {
             post = await Post.find();//Find all Post
             return res.status(201).json({ data: post, user: user });
         }
